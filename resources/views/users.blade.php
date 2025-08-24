@@ -63,6 +63,18 @@
             font-size: 16px;
             margin-bottom: 4px;
         }
+        .btn-secondary {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #444;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #666;
+        }
     </style>
     <script>
         // Simple JS filtering for demonstration
@@ -113,7 +125,7 @@
     </script>
 </head>
 <body>
-    <a href="/" style="position:fixed;top:24px;left:24px;padding:10px 24px;background:#444;color:#fff;text-decoration:none;border-radius:6px;font-size:16px;z-index:10;">Back</a>
+    <a href="{{ route('home') }}" class="btn btn-secondary mb-3" style="position:fixed;top:24px;left:24px;z-index:10;">← Back to Home</a>
     <div class="centered">
         <h1>Users</h1>
         <div class="filters">

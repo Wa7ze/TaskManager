@@ -16,11 +16,10 @@
         max-width: 700px;
     }
 </style>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create Task</title>
+    <title>Edit Product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background-color: #000; color: #fff; }
@@ -32,21 +31,30 @@
 <body>
 <div class="container my-5">
     <div class="card p-4 shadow">
-        <h2 class="text-center mb-4">➕ Add Task</h2>
+        <h2 class="text-center mb-4">✏️ Edit Product</h2>
 
-        <form action="{{ route('tasks.store') }}" method="POST">
+        <form action="{{ route('products.update', $product) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label class="form-label">Name:</label>
-                <input type="text" name="name" class="form-control rounded" required>
+                <input type="text" name="name" value="{{ $product->name }}" class="form-control rounded" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Description:</label>
-                <textarea name="description" class="form-control rounded"></textarea>
+                <textarea name="description" class="form-control rounded">{{ $product->description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price:</label>
+                <input type="number" step="0.01" name="price" value="{{ $product->price }}" class="form-control rounded" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Category:</label>
+                <input type="text" name="category_name" value="{{ $product->category_name }}" class="form-control rounded" required>
             </div>
             <div class="d-flex justify-content-between">
-                <a href="{{ route('tasks.index') }}" class="btn btn-secondary">Back</a>
-                <button type="submit" class="btn btn-success">Save</button>
+                <a href="{{ route('products.index') }}" class="btn btn-secondary">Back</a>
+                <button type="submit" class="btn btn-warning">Update</button>
             </div>
         </form>
     </div>

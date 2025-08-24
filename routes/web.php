@@ -1,19 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/users', function () {
-    return view('users');
-});
-
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return redirect()->route('tasks.index');
-});
+    return view('home'); // Change 'welcome' to 'home'
+})->name('home');
 
 Route::resource('tasks', TaskController::class);
+Route::resource('products', ProductController::class);
